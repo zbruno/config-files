@@ -26,7 +26,7 @@
 
 #   Set Paths
 #   ------------------------------------------------------------
-    PATH="/usr/local/git/bin:/sw/bin:/usr/local/bin:/usr/local:/usr/local/sbin:/usr/local/mysql/bin:~/.composer/vendor/bin:/usr/local/php5/bin:~/Library/Python/2.7/bin:~/.local/bin:$HOME/.yarn/bin:~/spark-installer:$PATH"
+    PATH="/usr/local/git/bin:/sw/bin:/usr/local/bin:/usr/local:/usr/local/sbin:/usr/local/mysql/bin:~/.composer/vendor/bin:~/.local/bin:$HOME/.yarn/bin:~/spark-installer:$PATH"
 
 
 #   Set Default Editor (change 'Nano' to the editor of your choice)
