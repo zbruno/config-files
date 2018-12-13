@@ -9,17 +9,6 @@ local cornerNum = 1
 hs.window.animationDuration = 0.1
 hs.grid.setMargins(hs.geometry.new(nil, nil, 0, 0))
 
-local screens = {
-  primary = hs.screen.primaryScreen(),
-  secondary = hs.screen.primaryScreen():previous()
-}
-
-local display_preferences = {
-  {'PhpStorm', nil, screens.secondary, hs.layout.left70, nil, nil},
-  {'iTerm', nil, screens.secondary, hs.layout.right30, nil, nil},
-  {'Google Chrome', nil, screens.primary, hs.layout.maximized, nil, nil}
-}
-
 -- Toggle corner placement of focused window
 function toggle_corner_placement(_direction)
   local win = hs.window.focusedWindow()
@@ -93,14 +82,7 @@ function toggle_application(_app)
   hs.application.launchOrFocus(_app)
 end
 
--- Set up work environment
-function set_up_work_environment()
-  toggle_application('PhpStorm')
-  toggle_application('iTerm')
-  toggle_application('Google Chrome')
-end
-
--- Set up work environment
+-- Change volume
 function change_system_volume(direction)
   local curVol = hs.audiodevice.defaultOutputDevice():volume()
 
@@ -113,6 +95,12 @@ function change_system_volume(direction)
   end
 end
 
+-- Open Email
+function open_tab(tabNum)
+  toggle_application('Google Chrome')
+  hs.eventtap.keyStroke('cmd', tabNum)
+end
+
 -- Hotkeys to trigger window management actions
 hs.hotkey.bind(hyper, 'Left', function() toggle_size('left') end)
 hs.hotkey.bind(hyper, 'Right', function() toggle_size('right') end)
@@ -121,12 +109,6 @@ hs.hotkey.bind(hyper, 'Up', function() toggle_corner_placement('up') end)
 hs.hotkey.bind(hyper, 'pad1', function() hs.window.focusedWindow():moveOneScreenWest() end)
 hs.hotkey.bind(hyper, 'pad2', function() hs.window.focusedWindow():moveOneScreenEast() end)
 hs.hotkey.bind(hyper, 'f', function() hs.grid.maximizeWindow(hs.window.focusedWindow()) end)
-
--- Open all work apps
-hs.hotkey.bind(hyper, '9', function() set_up_work_environment() end)
-
--- Hotkeys to trigger defined layouts
-hs.hotkey.bind(hyper, '0', function() hs.layout.apply(display_preferences) end)
 
 -- Hotkeys to trigger open and/or focus applications
 hs.hotkey.bind(hyper, 'q', function() toggle_application('PhpStorm') end)
@@ -139,10 +121,10 @@ hs.hotkey.bind(hyper, 's', function() toggle_application('Spotify') end)
 hs.hotkey.bind(hyper, 'd', function() toggle_application('Things3') end)
 hs.hotkey.bind(hyper, 'z', function() toggle_application('Sketch') end)
 hs.hotkey.bind(hyper, 'x', function() toggle_application('Trello') end)
-hs.hotkey.bind(hyper, 'c', function() toggle_application('Boxy for Calendar') end)
+hs.hotkey.bind(hyper, 'c', function() open_tab('3') end)
 hs.hotkey.bind(hyper, 'n', function() toggle_application('Notion') end)
 hs.hotkey.bind(hyper, 'm', function() toggle_application('Messages') end)
-hs.hotkey.bind(hyper, 'f', function() toggle_application('Boxy for Gmail') end)
+hs.hotkey.bind(hyper, '1', function() open_tab('2') end)
 
 -- Hotkeys to trigger Spotify Actions
 hs.hotkey.bind(hyper, 'f5', function() hs.spotify.previous() end)
