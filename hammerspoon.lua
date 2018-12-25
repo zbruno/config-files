@@ -5,6 +5,31 @@ local hyper = {'shift', 'ctrl', 'alt', 'cmd'}
 local numSplit = 0
 local cornerNum = 1
 
+-- Variables for Chrome Tabs
+local appsArray = {
+  {'LocalHost', 'l', 'browser'},
+  {'Gmail', 'g', 'browser'},
+  {'Calendar', 'c', 'browser'},
+  {'Slack', 'a', 'browser'},
+  {'Notion', 'n', 'browser'},
+  {'Trello', 'x', 'browser'},
+  {'Amplitude', 'v', 'browser'},
+  {'ProductBoard', 'p', 'browser'},
+  {'PhpStorm', 'q', 'app'},
+  {'iTerm', 'w', 'app'},
+  {'Google Chrome', 'e', 'app'},
+  {'Sequel Pro', 'r', 'app'},
+  {'Tower', 't', 'app'},
+  {'Spotify', 's', 'app'},
+  {'Things3', 'd', 'app'},
+  {'Sketch', 'z', 'app'},
+  {'Messages', 'm', 'app'},
+}
+for k,v in pairs(appsArray) do
+   hs.hotkey.bind(hyper, v[2], function() focus_a_thing(v, k) end)
+end
+
+
 -- Configuration options
 hs.window.animationDuration = 0.1
 hs.grid.setMargins(hs.geometry.new(nil, nil, 0, 0))
@@ -77,11 +102,6 @@ function toggle_size(_direction)
   end
 end
 
--- Bring specifc applications to focus
-function toggle_application(_app)
-  hs.application.launchOrFocus(_app)
-end
-
 -- Change volume
 function change_system_volume(direction)
   local curVol = hs.audiodevice.defaultOutputDevice():volume()
@@ -95,10 +115,23 @@ function change_system_volume(direction)
   end
 end
 
--- Open Email
-function open_tab(tabNum)
-  toggle_application('Google Chrome')
-  hs.eventtap.keyStroke('cmd', tabNum)
+-- Bring specifc applications to focus
+function focus_application(_app)
+  hs.application.launchOrFocus(_app)
+end
+
+function focus_tab(index)
+  focus_application('Google Chrome')
+  hs.eventtap.keyStroke('cmd', tostring(index))
+end
+
+-- Open App
+function focus_a_thing(value, index)
+  if (value[3] == 'browser') then
+    focus_tab(index)
+  else
+    focus_application(value[1])
+  end
 end
 
 -- Hotkeys to trigger window management actions
@@ -109,22 +142,6 @@ hs.hotkey.bind(hyper, 'Up', function() toggle_corner_placement('up') end)
 hs.hotkey.bind(hyper, 'pad1', function() hs.window.focusedWindow():moveOneScreenWest() end)
 hs.hotkey.bind(hyper, 'pad2', function() hs.window.focusedWindow():moveOneScreenEast() end)
 hs.hotkey.bind(hyper, 'f', function() hs.grid.maximizeWindow(hs.window.focusedWindow()) end)
-
--- Hotkeys to trigger open and/or focus applications
-hs.hotkey.bind(hyper, 'q', function() toggle_application('PhpStorm') end)
-hs.hotkey.bind(hyper, 'w', function() toggle_application('iTerm') end)
-hs.hotkey.bind(hyper, 'e', function() toggle_application('Google Chrome') end)
-hs.hotkey.bind(hyper, 'r', function() toggle_application('Sequel Pro') end)
-hs.hotkey.bind(hyper, 't', function() toggle_application('Tower') end)
-hs.hotkey.bind(hyper, 'a', function() toggle_application('Slack') end)
-hs.hotkey.bind(hyper, 's', function() toggle_application('Spotify') end)
-hs.hotkey.bind(hyper, 'd', function() toggle_application('Things3') end)
-hs.hotkey.bind(hyper, 'z', function() toggle_application('Sketch') end)
-hs.hotkey.bind(hyper, 'x', function() toggle_application('Trello') end)
-hs.hotkey.bind(hyper, 'c', function() open_tab('3') end)
-hs.hotkey.bind(hyper, 'n', function() toggle_application('Notion') end)
-hs.hotkey.bind(hyper, 'm', function() toggle_application('Messages') end)
-hs.hotkey.bind(hyper, '1', function() open_tab('2') end)
 
 -- Hotkeys to trigger Spotify Actions
 hs.hotkey.bind(hyper, 'f5', function() hs.spotify.previous() end)
