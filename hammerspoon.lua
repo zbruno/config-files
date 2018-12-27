@@ -154,11 +154,9 @@ hs.hotkey.bind(hyper, '-', function() change_system_volume('down') end)
 
 -- Reload config on change
 function reloadConfig(paths)
-  doReload = false
   for _,file in pairs(paths) do
     if file:sub(-4) == '.lua' then
       print('reloading hammerspoon config')
-      doReload = true
       hs.reload()
     end
   end
