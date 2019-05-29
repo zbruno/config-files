@@ -15,6 +15,7 @@ local appsArray = {
   {'Trello', 'x', 'browser'},
   {'Amplitude', 'v', 'browser'},
   {'ProductBoard', 'p', 'browser'},
+  {'Figma', 'z', 'browser'},
   {'PhpStorm', 'q', 'app'},
   {'iTerm', 'w', 'app'},
   {'Google Chrome', 'e', 'app'},
@@ -22,7 +23,6 @@ local appsArray = {
   {'Tower', 't', 'app'},
   {'Spotify', 's', 'app'},
   {'Things3', 'd', 'app'},
-  {'Sketch', 'z', 'app'},
   {'Messages', 'm', 'app'},
 }
 for k,v in pairs(appsArray) do
@@ -122,7 +122,13 @@ end
 
 function focus_tab(index)
   focus_application('Google Chrome')
-  hs.eventtap.keyStroke('cmd', tostring(index))
+
+  if (index > 8) then
+    hs.eventtap.keyStroke('cmd', '8')
+    hs.eventtap.keyStroke('ctrl', 'tab')
+  else
+    hs.eventtap.keyStroke('cmd', tostring(index))
+  end
 end
 
 -- Open App
