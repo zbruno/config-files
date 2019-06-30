@@ -26,8 +26,17 @@
 
 #   Set Paths
 #   ------------------------------------------------------------
-    PATH="/usr/local/git/bin:/sw/bin:/usr/local/bin:/usr/local:/usr/local/sbin:/usr/local/mysql/bin:~/.composer/vendor/bin:~/.local/bin:$HOME/.yarn/bin:~/spark-installer:$PATH"
-
+    PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:"
+    PATH="/usr/local/git/bin:/sw/bin:${PATH}"
+    PATH="/usr/local/mysql/bin:${PATH}"
+    PATH="${HOME}/.local/bin:${PATH}"
+    PATH="${HOME}/.composer/vendor/bin:${PATH}"
+    PATH="${HOME}/Library/Python/2.7/bin:${PATH}"
+    PATH="${HOME}/.yarn/bin:${PATH}"
+    PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
+    PATH="${HOME}/.yarn/bin:${PATH}"
+    PATH="${HOME}/.platformsh/bin${PATH}"
+    export PATH
 
 #   Set Default Editor (change 'Nano' to the editor of your choice)
 #   ------------------------------------------------------------
@@ -37,6 +46,8 @@
 #   from this: http://hints.macworld.com/comment.php?mode=view&cid=24491
 #   ------------------------------------------------------------
     export BLOCKSIZE=1k
+
+    export NODE_OPTIONS=--max_old_space_size=4096
 
 #   Add color to terminal
 #   (this is all commented out as I use Mac Terminal Profiles)
@@ -78,16 +89,17 @@ ql () { qlmanage -p "$*" >& /dev/null; }    # ql:           Opens any file in Ma
 alias DT='tee ~/Desktop/terminalOut.txt'    # DT:           Pipe content to file on MacOS Desktop
 alias undo='git reset HEAD~1'               # undo:         Undo Last commit
 alias app="cd ~/sites/curology && yarn && yarn run webpack-dev"    # Go to pertinant app directoryand run app
-alias ssh-staging="heroku run bash --app=curology-staging"
-alias ssh-production="heroku run bash --app=curology-production"
+alias ssh-staging="heroku run bash --app=app-curology-staging"
+alias ssh-production="heroku run bash --app=app-curology-production"
 alias jenkins="ssh -i '~/.ssh/curology-jenkins-jeremy.pem' ubuntu@ec2-52-44-85-17.compute-1.amazonaws.com"
 alias testing="ssh forge@ec2-52-207-208-83.compute-1.amazonaws.com"         #testing
 alias px="php -dxdebug.remote_autostart artisan"    # debug: Run php artisan commands in debug mode
 alias testsetup="./tests/scripts/phpunit_setup.sh root testing"
-alias test="./tests/scripts/phpunit.sh --unit"
-alias tests="./tests/scripts/phpunit.sh --stop"
-alias testf="./tests/scripts/phpunit.sh --filter"
-alias testp="vendor/bin/paratest -p14 tests/Unit"
+alias test="cd ~/sites/curology && ./tests/scripts/phpunit.sh --unit"
+alias tests="cd ~/sites/curology && ./tests/scripts/phpunit.sh --stop"
+alias testf="cd ~/sites/curology && ./tests/scripts/phpunit.sh --filter"
+alias testp="cd ~/sites/curology && vendor/bin/paratest -p14 tests/Unit"
+alias parti="cd ~/sites/curology && php artisan"
 
 xon () { #enable xdebug
     sed -i -e "s/.*zend_extension.*/zend_extension=\"\/usr\/local\/opt\/php70-xdebug\/xdebug.so\"/" /usr/local/etc/php/7.0/conf.d/ext-xdebug.ini
@@ -329,13 +341,7 @@ httpHeaders () { /usr/bin/curl -I -L $@ ; }             # httpHeaders:      Grab
 #   the above create files that are almost all zeros - if random bytes are desired
 #   then use: ~/Dev/Perl/randBytes 1048576 > 10MB.dat
 
-# Setting PATH for Python 3.5
-# The original version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
-export PATH
 
-# Automatically added by the Platform.sh CLI installer
-export PATH='/Users/zacharybruno/.platformsh/bin':"$PATH"
 [ "$BASH" ] || [ "$ZSH" ] && . '/Users/zacharybruno/.platformsh/shell-config.rc' 2>/dev/null || true
 
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
