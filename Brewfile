@@ -1,6 +1,5 @@
 tap "homebrew/cask"
 
-brew "git"
 brew "node"
 
 cask "google-chrome"
@@ -11,3 +10,6 @@ cask "iterm2"
 cask "1password"
 cask "flux"
 cask "slack"
+cask "nordvpn"
+cask "alfred"
+cask "spotify"
