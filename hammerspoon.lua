@@ -10,7 +10,7 @@ local appsArray = {
   {'Gmail', 'd', 'browser'},
   {'Calendar', 'c', 'browser'},
   {'Slack', 'a', 'browser'},
-  {'Sublime Text', 'q', 'app'},
+  {'Visual Studio Code', 'q', 'app'},
   {'iTerm', 'w', 'app'},
   {'Google Chrome', 'e', 'app'},
   {'Sequel Pro', 'r', 'app'},
