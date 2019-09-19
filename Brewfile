@@ -1,6 +1,10 @@
 tap "homebrew/cask"
 
 brew "node"
+brew "rbenv"
+brew "ruby-build"
+brew "mysql"
+brew "yarn"
 
 cask "google-chrome"
 cask "karabiner-elements"
@@ -13,3 +17,5 @@ cask "slack"
 cask "nordvpn"
 cask "alfred"
 cask "spotify"
+cask "sequel-pro"
+
