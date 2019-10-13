@@ -1,11 +1,15 @@
 tap "homebrew/cask"
+tap homebrew/services
 
 brew "node"
 brew "php"
+brew "nginx"
+brew "dnsmasq"
 brew "composer"
 brew "rbenv"
 brew "ruby-build"
 brew "mysql"
+brew "mariadb"
 brew "yarn"
 
 cask "google-chrome"

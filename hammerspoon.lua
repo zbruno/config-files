@@ -5,14 +5,14 @@ local hyper = {'shift', 'ctrl', 'alt', 'cmd'}
 local numSplit = 0
 local cornerNum = 1
 
--- Variables for Chrome Tabs
+-- Variables for Browser Tabs
 local appsArray = {
   {'Gmail', 'd', 'browser'},
   {'Calendar', 'c', 'browser'},
   {'Slack', 'a', 'browser'},
   {'Visual Studio Code', 'q', 'app'},
   {'iTerm', 'w', 'app'},
-  {'Google Chrome', 'e', 'app'},
+  {'Firefox', 'e', 'app'},
   {'Sequel Pro', 'r', 'app'},
   {'Tower', 't', 'app'},
   {'Spotify', 's', 'app'},
@@ -115,7 +115,7 @@ function focus_application(_app)
 end
 
 function focus_tab(index)
-  focus_application('Google Chrome')
+  focus_application('Firefox')
 
   if (index > 8) then
     hs.eventtap.keyStroke('cmd', '8')
