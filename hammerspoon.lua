@@ -14,7 +14,7 @@ local appsArray = {
   {'iTerm', 'w', 'app'},
   {'Firefox', 'e', 'app'},
   {'Sequel Pro', 'r', 'app'},
-  {'Tower', 't', 'app'},
+  {'Fork', 't', 'app'},
   {'Spotify', 's', 'app'},
   {'Things3', 'f', 'app'},
   {'Messages', 'm', 'app'},

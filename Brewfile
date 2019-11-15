@@ -12,7 +12,7 @@ brew "mysql"
 brew "mariadb"
 brew "yarn"
 
-cask "google-chrome"
+cask "firefox"
 cask "karabiner-elements"
 cask "hammerspoon"
 cask "iterm2"
