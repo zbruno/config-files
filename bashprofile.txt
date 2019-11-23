@@ -29,7 +29,6 @@
 #   ------------------------------------------------------------
     PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:"
     PATH="/usr/local/git/bin:/sw/bin:${PATH}"
-    PATH="/usr/local/mysql/bin:${PATH}"
     # Homebrew
     PATH="/usr/local/sbin:${PATH}"
     # Composer
@@ -38,8 +37,6 @@
     PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:${PATH}"
     # Spark Installer
     PATH="~/spark-installer:${PATH}"
-    # Mysql
-    PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
     PATH="~/.local/bin:${PATH}"
     export PATH
 
@@ -89,7 +86,7 @@ alias app="cd ~/sites/expenses && npm && npm run watch"    # Go to pertinant app
 alias test="./tests/scripts/phpunit.sh --unit"
 alias tests="./tests/scripts/phpunit.sh --stop"
 alias testf="./tests/scripts/phpunit.sh --filter"
-alias testp="vendor/bin/paratest -p14 tests/Unit"
+alias testsetup="./tests/scripts/phpunit_setup.sh"
 
 xon () { #enable xdebug
     sed -i -e "s/.*zend_extension.*/zend_extension=\"\/usr\/local\/opt\/php70-xdebug\/xdebug.so\"/" /usr/local/etc/php/7.0/conf.d/ext-xdebug.ini
@@ -97,10 +94,6 @@ xon () { #enable xdebug
 
 xoff () { #disable xdebug
     sed -i -e "s/.*zend_extension.*/\;zend_extension=\"\/usr\/local\/opt\/php70-xdebug\/xdebug.so\"/" /usr/local/etc/php/7.0/conf.d/ext-xdebug.ini
-}
-
-ssh-review () { #ssh into review app
-    heroku run bash --app=curology-staging-pr-"$1"
 }
 
 #   Git Commands
