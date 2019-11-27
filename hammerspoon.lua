@@ -9,7 +9,7 @@ local cornerNum = 1
 local appsArray = {
   {'Gmail', 'd', 'browser'},
   {'Calendar', 'c', 'browser'},
-  {'Slack', 'a', 'browser'},
+  {'Slack', 'a', 'app'},
   {'Visual Studio Code', 'q', 'app'},
   {'iTerm', 'w', 'app'},
   {'Firefox', 'e', 'app'},
