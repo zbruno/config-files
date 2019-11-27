@@ -82,11 +82,13 @@ trash () { command mv "$@" ~/.Trash ; }     # trash:        Moves a file to the 
 ql () { qlmanage -p "$*" >& /dev/null; }    # ql:           Opens any file in MacOS Quicklook Preview
 alias DT='tee ~/Desktop/terminalOut.txt'    # DT:           Pipe content to file on MacOS Desktop
 alias undo='git reset HEAD~1'               # undo:         Undo Last commit
-alias app="cd ~/sites/expenses && npm && npm run watch"    # Go to pertinant app directoryand run app
-alias test="./tests/scripts/phpunit.sh --unit"
-alias tests="./tests/scripts/phpunit.sh --stop"
-alias testf="./tests/scripts/phpunit.sh --filter"
-alias testsetup="./tests/scripts/phpunit_setup.sh"
+alias app='cd ~/sites/expenses && npm && npm run watch'    # Go to pertinant app directoryand run app
+alias test='./tests/scripts/phpunit.sh --unit'
+alias tests='./tests/scripts/phpunit.sh --stop'
+alias testf='./tests/scripts/phpunit.sh --filter'
+alias testsetup='./tests/scripts/phpunit_setup.sh'
+
+function anybar { echo -n $1 | nc -4u -w0 localhost ${2:-1738}; }
 
 xon () { #enable xdebug
     sed -i -e "s/.*zend_extension.*/zend_extension=\"\/usr\/local\/opt\/php70-xdebug\/xdebug.so\"/" /usr/local/etc/php/7.0/conf.d/ext-xdebug.ini
