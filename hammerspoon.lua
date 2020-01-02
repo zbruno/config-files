@@ -12,7 +12,7 @@ local appsArray = {
   {'Slack', 'a', 'app'},
   {'Visual Studio Code', 'q', 'app'},
   {'iTerm', 'w', 'app'},
-  {'Firefox', 'e', 'app'},
+  {'Brave Browser', 'e', 'app'},
   {'Sequel Pro', 'r', 'app'},
   {'Fork', 't', 'app'},
   {'Spotify', 's', 'app'},
@@ -20,7 +20,7 @@ local appsArray = {
   {'Messages', 'm', 'app'},
 }
 for k,v in pairs(appsArray) do
-   hs.hotkey.bind(hyper, v[2], function() focus_a_thing(v, k) end)
+  hs.hotkey.bind(hyper, v[2], function() focus_a_thing(v, k) end)
 end
 
 
