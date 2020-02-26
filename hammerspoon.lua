@@ -12,7 +12,7 @@ local appsArray = {
   {'Slack', 'a', 'app'},
   {'Visual Studio Code', 'q', 'app'},
   {'iTerm', 'w', 'app'},
-  {'Brave Browser', 'e', 'app'},
+  {'Google Chrome', 'e', 'app'},
   {'Sequel Pro', 'r', 'app'},
   {'Fork', 't', 'app'},
   {'Spotify', 's', 'app'},
@@ -115,7 +115,7 @@ function focus_application(_app)
 end
 
 function focus_tab(index)
-  focus_application('Firefox')
+  focus_application('Google Chrome')
 
   if (index > 8) then
     hs.eventtap.keyStroke('cmd', '8')
