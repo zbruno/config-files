@@ -1,5 +1,5 @@
 tap "homebrew/cask"
-tap homebrew/services
+tap "homebrew/services"
 
 brew "node"
 brew "php"
@@ -12,7 +12,7 @@ brew "mysql"
 brew "mariadb"
 brew "yarn"
 
-cask "firefox"
+cask "google-chrome"
 cask "karabiner-elements"
 cask "hammerspoon"
 cask "iterm2"
