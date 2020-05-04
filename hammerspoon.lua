@@ -18,10 +18,10 @@ local appsArray = {
   {'Things3', 'f', 'app'},
   {'Messages', 'm', 'app'},
 }
+
 for k,v in pairs(appsArray) do
   hs.hotkey.bind(hyper, v[2], function() focus_a_thing(v, k) end)
 end
-
 
 -- Configuration options
 hs.window.animationDuration = 0.1
