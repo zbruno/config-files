@@ -31,6 +31,7 @@ local appsArray = {
   {'Messages', 'm', 'app'},
   {'Figma', 'f', 'app'},
 }
+
 for k,v in pairs(appsArray) do
   hs.hotkey.bind(hyper, v[2], function() focus_a_thing(v, k) end)
 end
