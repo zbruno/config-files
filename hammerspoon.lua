@@ -19,21 +19,21 @@ Install:andUse("MiroWindowsManager", {
 
 -- Variables for Browser Tabs
 local appsArray = {
-  {'Gmail', 'x', 'browser'},
-  {'Calendar', 'c', 'browser'},
-  {'Slack', 'a', 'app'},
-  {'Visual Studio Code', 'q', 'app'},
-  {'iTerm', 'w', 'app'},
-  {'Google Chrome', 'e', 'app'},
-  {'Tower', 't', 'app'},
-  {'Spotify', 's', 'app'},
-  {'Things3', 'd', 'app'},
-  {'Messages', 'm', 'app'},
-  {'Figma', 'f', 'app'},
+  {'Boxy for Gmail', 'x'},
+  {'Boxy for Calendar', 'c'},
+  {'Slack', 'a'},
+  {'Visual Studio Code', 'q'},
+  {'iTerm', 'w'},
+  {'Google Chrome', 'e'},
+  {'Tower', 't'},
+  {'Spotify', 's'},
+  {'Things3', 'd'},
+  {'Messages', 'm'},
+  {'Figma', 'f'},
 }
 
 for k,v in pairs(appsArray) do
-  hs.hotkey.bind(hyper, v[2], function() focus_a_thing(v, k) end)
+  hs.hotkey.bind(hyper, v[2], function() focus_application(v[1]) end)
 end
 
 -- Change volume
@@ -52,26 +52,6 @@ end
 -- Bring specifc applications to focus
 function focus_application(_app)
   hs.application.launchOrFocus(_app)
-end
-
-function focus_tab(index)
-  focus_application('Google Chrome')
-
-  if (index > 8) then
-    hs.eventtap.keyStroke('cmd', '8')
-    hs.eventtap.keyStroke('ctrl', 'tab')
-  else
-    hs.eventtap.keyStroke('cmd', tostring(index))
-  end
-end
-
--- Open App
-function focus_a_thing(value, index)
-  if (value[3] == 'browser') then
-    focus_tab(index)
-  else
-    focus_application(value[1])
-  end
 end
 
 -- Hotkeys to trigger window management actions
