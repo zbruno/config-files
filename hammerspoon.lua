@@ -25,11 +25,9 @@ local appsArray = {
   {'Visual Studio Code', 'q'},
   {'iTerm', 'w'},
   {'Google Chrome', 'e'},
-  {'Tower', 't'},
   {'Spotify', 's'},
-  {'Things3', 'd'},
+  {'Discord', 'd'},
   {'Messages', 'm'},
-  {'Figma', 'f'},
 }
 
 for k,v in pairs(appsArray) do
