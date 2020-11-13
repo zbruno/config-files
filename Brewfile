@@ -11,7 +11,6 @@ brew "romkatv/powerlevel10k/powerlevel10k"
 brew "zsh-syntax-highlighting"
 brew "bash-completion@2"
 
-cask "google-chrome"
 cask "karabiner-elements"
 cask "hammerspoon"
 cask "iterm2"
