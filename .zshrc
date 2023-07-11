@@ -15,7 +15,7 @@ PATH="/usr/local/sbin:${PATH}"
 PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:${PATH}"
 PATH="~/.local/bin:${PATH}"
 PATH="~/.gem/bin:${PATH}"
-PATH="~/.rvm/bin:${PATH}"
+PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 
 export PATH
 
@@ -36,7 +36,7 @@ plugins=(
   git
   yarn 
   node 
-  osx 
+  macos 
   sudo
   zsh-z
 )
@@ -62,7 +62,7 @@ alias mv='mv -iv'
 alias mkdir='mkdir -pv'
 alias ls='colorls --group-directories-first --almost-all'
 alias ll='colorls --group-directories-first --almost-all --long'
-cd() { builtin cd "$@"; ll; }
+cd() { builtin cd "$@"; ls; }
 alias cd..='cd ../'
 alias ~="cd ~"
 alias which='type -all'
@@ -78,8 +78,19 @@ if [ -f ~/.git-completion.bash ]; then
 fi
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZSH/oh-my-zsh.sh
+source $(dirname $(gem which colorls))/tab_complete.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+source /Users/zacharybruno/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+export PATH=/usr/local/mysql/bin/:$PATH
+
+if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
+  export PATH=/opt/homebrew/opt/ruby/bin:$PATH
+  export PATH=`gem environment gemdir`/bin:$PATH
+fi
+
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
