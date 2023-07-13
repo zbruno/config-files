@@ -23,8 +23,9 @@ export PATH
 # EXPORT Variables
 #-----------------------
 
-export ZSH="/Users/zacharybruno/.oh-my-zsh"
+export ZSH="~/.oh-my-zsh"
 export SSH_KEY_PATH="~/.ssh/rsa_id"
+export HOMEBREW_PREFIX="/opt/homebrew"
 
 #-----------------------
 # THEME Variables
@@ -34,11 +35,9 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 ENABLE_CORRECTION="true"
 plugins=(
   git
-  yarn 
   node 
   macos 
   sudo
-  zsh-z
 )
 
 #-----------------------
@@ -78,19 +77,15 @@ if [ -f ~/.git-completion.bash ]; then
 fi
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZSH/oh-my-zsh.sh
 source $(dirname $(gem which colorls))/tab_complete.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-source /Users/zacharybruno/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export PATH=/usr/local/mysql/bin/:$PATH
 
 if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
   export PATH=/opt/homebrew/opt/ruby/bin:$PATH
   export PATH=`gem environment gemdir`/bin:$PATH
 fi
-
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
