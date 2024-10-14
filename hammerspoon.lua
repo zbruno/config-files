@@ -22,11 +22,12 @@ local appsArray = {
   {'Gmail', 'x', 'browser'},
   {'Calendar', 'c', 'browser'},
   {'Slack', 'a', 'app'},
-  {'Visual Studio Code', 'q', 'app'},
+  {'Cursor', 'q', 'app'},
   {'iTerm', 'w', 'app'},
   {'Arc', 'e', 'app'},
+  {'Amie', 'r', 'app'},
   {'Github Desktop', 't', 'app'},
-  {'Spotify', 's', 'app'},
+  {'Music', 's', 'app'},
   {'Discord', 'd', 'app'},
   {'Messages', 'm', 'app'},
   {'Figma', 'f', 'app'},
@@ -55,7 +56,7 @@ function focus_application(_app)
 end
 
 function focus_tab(index)
-  focus_application('Firefox')
+  focus_application('Arc')
 
   if (index > 8) then
     hs.eventtap.keyStroke('cmd', '8')

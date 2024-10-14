@@ -10,9 +10,7 @@ fi
 PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:${PATH}"
 PATH="/usr/local/git/bin:/sw/bin:${PATH}"
 # Homebrew
-PATH="/usr/local/sbin:${PATH}"
-# VS Code terminal command (code)
-PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:${PATH}"
+PATH="/opt/homebrew/bin:${PATH}"
 PATH="~/.local/bin:${PATH}"
 
 export PATH
