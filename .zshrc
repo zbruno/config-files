@@ -7,7 +7,7 @@ fi
 # PATH Manipulations
 #-----------------------
 
-PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:${PATH}"
+PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:${PATH}"
 PATH="/usr/local/git/bin:/sw/bin:${PATH}"
 # Homebrew
 PATH="/opt/homebrew/bin:${PATH}"

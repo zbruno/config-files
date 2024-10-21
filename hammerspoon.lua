@@ -25,12 +25,11 @@ local appsArray = {
   {'Cursor', 'q', 'app'},
   {'iTerm', 'w', 'app'},
   {'Arc', 'e', 'app'},
-  {'Amie', 'r', 'app'},
+  {'Sequel Ace', 'r', 'app'},
   {'Github Desktop', 't', 'app'},
   {'Music', 's', 'app'},
   {'Discord', 'd', 'app'},
   {'Messages', 'm', 'app'},
-  {'Figma', 'f', 'app'},
 }
 
 for k,v in pairs(appsArray) do
