@@ -30,6 +30,7 @@ local appsArray = {
   {'Music', 's', 'app'},
   {'Discord', 'd', 'app'},
   {'Messages', 'm', 'app'},
+  {'WhatsApp', 'n', 'app'},
 }
 
 for k,v in pairs(appsArray) do
