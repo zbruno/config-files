@@ -67,8 +67,10 @@ fi
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZSH/oh-my-zsh.sh
-source $(dirname $(gem which colorls))/tab_complete.sh
+if gem list -i colorls >/dev/null 2>&1; then
+  source "$(dirname "$(gem which colorls)")/tab_complete.sh"
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-export PATH=/usr/local/mysql/bin/:$PATH
+export PATH="/opt/homebrew/opt/mysql/bin:$PATH"
