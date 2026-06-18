@@ -19,18 +19,20 @@ Install:andUse("MiroWindowsManager", {
 
 -- Variables for Browser Tabs
 local appsArray = {
-  {'Gmail', 'x', 'browser'},
-  {'Calendar', 'c', 'browser'},
+  {'Codex', 'x', 'app'},
+  {'Claude', 'c', 'app'},
   {'Slack', 'a', 'app'},
   {'Cursor', 'q', 'app'},
   {'iTerm', 'w', 'app'},
-  {'Arc', 'e', 'app'},
+  {'Google Chrome', 'e', 'app'},
   {'Sequel Ace', 'r', 'app'},
   {'Github Desktop', 't', 'app'},
-  {'Music', 's', 'app'},
+  {'Spotify', 's', 'app'},
   {'Discord', 'd', 'app'},
   {'Messages', 'm', 'app'},
   {'WhatsApp', 'n', 'app'},
+  {'Obsidian', 'o', 'app'},
+  {'Zoom.us', 'z', 'app'},
 }
 
 for k,v in pairs(appsArray) do
@@ -56,7 +58,7 @@ function focus_application(_app)
 end
 
 function focus_tab(index)
-  focus_application('Arc')
+  focus_application('Google Chrome')
 
   if (index > 8) then
     hs.eventtap.keyStroke('cmd', '8')

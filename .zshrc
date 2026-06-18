@@ -12,6 +12,7 @@ PATH="/usr/local/git/bin:/sw/bin:${PATH}"
 # Homebrew
 PATH="/opt/homebrew/bin:${PATH}"
 PATH="~/.local/bin:${PATH}"
+PATH="/opt/homebrew/opt/postgresql@18/bin:${PATH}"
 
 export PATH
 
@@ -57,6 +58,7 @@ alias gst="git status -s"
 alias ga="git add -p"
 alias undo='git reset HEAD~1'
 alias gcm="git commit -m"
+alias stopcoder='pkill -f "systemcontainer"'
 
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
