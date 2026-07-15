@@ -19,7 +19,7 @@ Install:andUse("MiroWindowsManager", {
 
 -- Variables for Browser Tabs
 local appsArray = {
-  {'Codex', 'x', 'app'},
+  {'ChatGPT', 'x', 'app'},
   {'Claude', 'c', 'app'},
   {'Slack', 'a', 'app'},
   {'Cursor', 'q', 'app'},
