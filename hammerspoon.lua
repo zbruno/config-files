@@ -19,20 +19,20 @@ Install:andUse("MiroWindowsManager", {
 
 -- Variables for Browser Tabs
 local appsArray = {
-  {'ChatGPT', 'x', 'app'},
-  {'Claude', 'c', 'app'},
-  {'Slack', 'a', 'app'},
   {'Cursor', 'q', 'app'},
   {'iTerm', 'w', 'app'},
   {'Google Chrome', 'e', 'app'},
-  {'Sequel Ace', 'r', 'app'},
+  {'Reminders', 'r', 'app'},
   {'Github Desktop', 't', 'app'},
+  {'Obsidian', 'o', 'app'},
+  {'Slack', 'a', 'app'},
   {'Spotify', 's', 'app'},
   {'Discord', 'd', 'app'},
-  {'Messages', 'm', 'app'},
-  {'WhatsApp', 'n', 'app'},
-  {'Obsidian', 'o', 'app'},
   {'Zoom.us', 'z', 'app'},
+  {'ChatGPT', 'x', 'app'},
+  {'Claude', 'c', 'app'},
+  {'WhatsApp', 'n', 'app'},
+  {'Messages', 'm', 'app'},
 }
 
 for k,v in pairs(appsArray) do
