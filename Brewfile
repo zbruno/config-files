@@ -1,5 +1,3 @@
-tap "homebrew/services"
-
 brew "node"
 brew "mysql"
 brew "postgresql@18"
