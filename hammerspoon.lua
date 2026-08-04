@@ -28,6 +28,7 @@ local appsArray = {
   {'Slack', 'a', 'app'},
   {'Spotify', 's', 'app'},
   {'Discord', 'd', 'app'},
+  {'Linear', 'l', 'app'},
   {'Zoom.us', 'z', 'app'},
   {'ChatGPT', 'x', 'app'},
   {'Claude', 'c', 'app'},
