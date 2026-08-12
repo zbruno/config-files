@@ -81,7 +81,13 @@ defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/Sites/config-files/ha
 gh auth login
 ```
 
-## 10. Reload the shell
+## 10. Enable signed commits
+
+```bash
+git config --global commit.gpgsign true
+```
+
+## 11. Reload the shell
 
 ```bash
 exec zsh
@@ -93,11 +99,11 @@ p10k configure   # only if you want to regenerate ~/.p10k.zsh; the repo's copy a
 These require GUI clicks / macOS permission grants:
 
 - **iTerm2 font** — set the font to **Hack Nerd Font** (installed by `brew bundle`) so the
-  p10k prompt glyphs render. iTerm2 → Settings → Profiles → Text → Font.
+p10k prompt glyphs render. iTerm2 → Settings → Profiles → Text → Font.
 - **Karabiner-Elements** — approve the driver extension, then grant **Input Monitoring** in
-  System Settings → Privacy & Security.
+System Settings → Privacy & Security.
 - **Hammerspoon** and **Raycast** — grant **Accessibility** permission in
-  System Settings → Privacy & Security → Accessibility.
+System Settings → Privacy & Security → Accessibility.
 - **1Password** — enable browser / CLI integration if you use it.
 
 GUI apps installed as casks (Discord, Slack, Cursor, Obsidian, Claude, Codex, GitHub
