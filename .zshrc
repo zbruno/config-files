@@ -12,7 +12,7 @@ PATH="/usr/local/git/bin:/sw/bin:${PATH}"
 # Homebrew
 PATH="/opt/homebrew/bin:${PATH}"
 PATH="~/.local/bin:${PATH}"
-PATH="/opt/homebrew/opt/postgresql@18/bin:${PATH}"
+PATH="/opt/homebrew/opt/mysql/bin:$PATH"
 
 export PATH
 
@@ -73,4 +73,3 @@ fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-export PATH="/opt/homebrew/opt/mysql/bin:$PATH"
