@@ -81,10 +81,26 @@ defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/Sites/config-files/ha
 gh auth login
 ```
 
-## 10. Enable signed commits
+## 10. Enable signed commits (GPG Suite)
+
+`gpg-suite-no-mail` is installed by `brew bundle`. After you import/create your key in
+GPG Keychain (see Manual steps), turn on signing for every commit:
 
 ```bash
 git config --global commit.gpgsign true
+```
+
+If git can't find `gpg`, point it at GPG Suite's binary:
+
+```bash
+git config --global gpg.program /usr/local/MacGPG2/bin/gpg2
+```
+
+Set your signing key once you know the ID (GPG Keychain → key → Copy → Fingerprint, or
+`gpg --list-secret-keys --keyid-format LONG`):
+
+```bash
+git config --global user.signingkey YOUR_KEY_ID
 ```
 
 ## 11. Reload the shell
@@ -99,12 +115,15 @@ p10k configure   # only if you want to regenerate ~/.p10k.zsh; the repo's copy a
 These require GUI clicks / macOS permission grants:
 
 - **iTerm2 font** — set the font to **Hack Nerd Font** (installed by `brew bundle`) so the
-p10k prompt glyphs render. iTerm2 → Settings → Profiles → Text → Font.
+  p10k prompt glyphs render. iTerm2 → Settings → Profiles → Text → Font.
 - **Karabiner-Elements** — approve the driver extension, then grant **Input Monitoring** in
-System Settings → Privacy & Security.
+  System Settings → Privacy & Security.
 - **Hammerspoon** and **Raycast** — grant **Accessibility** permission in
-System Settings → Privacy & Security → Accessibility.
+  System Settings → Privacy & Security → Accessibility.
 - **1Password** — enable browser / CLI integration if you use it.
+- **GPG Suite** — open **GPG Keychain**, import (or generate) your signing key, then finish
+  step 10 so git signs with it. Confirm the same key is added as a GPG key on GitHub
+  (Settings → SSH and GPG keys).
 
 GUI apps installed as casks (Discord, Slack, Cursor, Obsidian, Claude, Codex, GitHub
 Desktop) need nothing beyond launching.
