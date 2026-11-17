@@ -19,7 +19,7 @@ Install:andUse("MiroWindowsManager", {
 
 -- Variables for Browser Tabs
 local appsArray = {
-  {'Cursor', 'q', 'app'},
+  {'Visual Studio Code', 'q', 'app'},
   {'iTerm', 'w', 'app'},
   {'Google Chrome', 'e', 'app'},
   {'Reminders', 'r', 'app'},
@@ -32,7 +32,7 @@ local appsArray = {
   {'Zoom.us', 'z', 'app'},
   {'ChatGPT', 'x', 'app'},
   {'Claude', 'c', 'app'},
-  {'WhatsApp', 'n', 'app'},
+  {'Notion', 'n', 'app'},
   {'Messages', 'm', 'app'},
 }
 
