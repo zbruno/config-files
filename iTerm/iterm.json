@@ -419,7 +419,7 @@
   },
   "Cursor Type" : 2,
   "Blur" : true,
-  "Normal Font" : "HackNerdFontCompleteM-Regular 14",
+  "Normal Font" : "HackNFM-Regular 14",
   "Vertical Spacing" : 1.25,
   "Disable Printing" : false,
   "Ansi 7 Color" : {
@@ -459,7 +459,7 @@
     "Green Component" : 0.11372549086809158
   },
   "Screen" : -1,
-  "Non Ascii Font" : "HackNerdFontCompleteM-Regular 12",
+  "Non Ascii Font" : "HackNFM-Regular 12",
   "Ansi 13 Color" : {
     "Red Component" : 1,
     "Color Space" : "sRGB",
