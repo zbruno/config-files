@@ -138,7 +138,7 @@ Config keeps looking in `~/.hammerspoon`.
 What you get, all on caps lock plus a key:
 
 - **Arrows / Return** — snap the window to a half, or full screen.
-- **Letters** — jump to an app (`q` Cursor, `w` iTerm, `e` Chrome, `a` Slack, `c` Claude, ...;
+- **Letters** — jump to an app (`q` Visual Studio Code, `w` iTerm, `e` Chrome, `a` Slack, `c` Claude, ...;
   the full list is at the top of `hammerspoon.lua`).
 - **F5 / F6 / F7** — Spotify previous, play/pause, next.
 - **- / =** — volume down, up.

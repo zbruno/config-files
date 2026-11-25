@@ -19,7 +19,7 @@ Install:andUse("MiroWindowsManager", {
 
 -- Variables for Browser Tabs
 local appsArray = {
-  {'Cursor', 'q', 'app'},
+  {'Visual Studio Code', 'q', 'app'},
   {'iTerm', 'w', 'app'},
   {'Google Chrome', 'e', 'app'},
   {'Reminders', 'r', 'app'},
