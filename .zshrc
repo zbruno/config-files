@@ -36,6 +36,9 @@ alias undo='git reset HEAD~1'
 alias gcm="git commit -m"
 alias stopcoder='pkill -f "systemcontainer"'
 
+# Machine-only settings and secrets; never committed.
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
 #-----------------------
 # Tools
 #-----------------------

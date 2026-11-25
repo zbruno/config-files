@@ -78,6 +78,9 @@ cp ~/Sites/config-files/.zshrc ~
 exec zsh
 ```
 
+Put anything specific to one machine (API keys, work functions) in `~/.zshrc.local`.
+The `.zshrc` loads it if it exists, and it never goes into this repo.
+
 The Starship prompt works with no config. To customize it, create
 `~/.config/starship.toml` (see https://starship.rs/config/).
 
@@ -193,7 +196,7 @@ git config --global user.signingkey YOUR_KEY_ID
 - **Wallpapers** — desktop backgrounds and screen savers are in `Wallpapers/`; set them in
   System Settings → Wallpaper.
 
-GUI apps installed as casks (Discord, Slack, Cursor, Obsidian, Claude, Codex, GitHub
+GUI apps installed as casks (Discord, Slack, Visual Studio Code, Obsidian, Claude, Codex, GitHub
 Desktop, WhatsApp) need nothing beyond launching and signing in.
 
 ## Keeping this repo up to date
