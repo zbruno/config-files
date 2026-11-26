@@ -8,7 +8,7 @@ These steps set up a fresh Mac from nothing. They assume Apple Silicon (Homebrew
 | What | File in this repo | How it gets loaded |
 | --- | --- | --- |
 | Apps and command-line tools | `Brewfile` | `brew bundle` (step 4) |
-| Shell: prompt, aliases, plugins | `.zshrc` | copied to `~` (step 5) |
+| Shell: prompt, aliases, plugins | `.zshrc` | `~/.zshrc` sources it from this repo (step 5) |
 | iTerm2 profile and colors | `iTerm/iterm.json` | imported in iTerm2 (step 7) |
 | Caps lock as hyper key | `karabiner/karabiner.json` | copied to `~/.config/karabiner` (step 8) |
 | Hotkeys and window management | `hammerspoon.lua`, `Spoons/` | Hammerspoon reads them from this repo (step 9) |
@@ -71,10 +71,13 @@ the macOS font service only watches folders that existed when you logged in. Unt
 restarts, the Nerd Fonts are on disk but no app can see them, and icons show as boxes.
 Logging out and back in does the same thing.
 
-## 5. Copy the shell config and reload
+## 5. Point the shell at this repo's config and reload
+
+`~/.zshrc` is a one-line file that loads the `.zshrc` in this repo, so there is only one
+copy to edit and `git pull` updates the shell.
 
 ```bash
-cp ~/Sites/config-files/.zshrc ~
+echo 'source "$HOME/Sites/config-files/.zshrc"' > ~/.zshrc
 exec zsh
 ```
 
@@ -201,14 +204,14 @@ Desktop, WhatsApp) need nothing beyond launching and signing in.
 
 ## Keeping this repo up to date
 
-`.zshrc`, the Karabiner config and the iTerm2 profile are copies, so changes made on a machine do not flow back
-here on their own.
+The Karabiner config and the iTerm2 profile are copies, so changes made on a machine do
+not flow back here on their own.
 
-- After editing `~/.zshrc`: `cp ~/.zshrc ~/Sites/config-files/.zshrc`
 - After changing Karabiner settings:
   `cp ~/.config/karabiner/karabiner.json ~/Sites/config-files/karabiner/`
 - After changing the iTerm2 profile: Settings → Profiles → Other Actions → Save Profile as
   JSON, and overwrite `iTerm/iterm.json`.
 - After installing something with Homebrew that you want everywhere: add it to `Brewfile`.
 
-`hammerspoon.lua` is read straight from this repo, so edits to it apply immediately.
+`.zshrc` and `hammerspoon.lua` are read straight from this repo. Edit them here; a
+`.zshrc` change applies in the next new shell, a `hammerspoon.lua` change immediately.
