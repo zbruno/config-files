@@ -1,57 +1,33 @@
-# Enable Powerlevel10k instant prompt.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# Homebrew's paths are set up in ~/.zprofile.
 
 #-----------------------
-# PATH Manipulations
+# PATH
 #-----------------------
 
-PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:${PATH}"
-PATH="/usr/local/git/bin:/sw/bin:${PATH}"
-# Homebrew
-PATH="/opt/homebrew/bin:${PATH}"
-PATH="~/.local/bin:${PATH}"
-PATH="/opt/homebrew/opt/mysql/bin:$PATH"
-
-export PATH
+typeset -U path  # no duplicate entries
+path=("$HOME/.local/bin" "/opt/homebrew/opt/mysql/bin" $path)
 
 #-----------------------
-# EXPORT Variables
+# History and completion
 #-----------------------
 
-export ZSH="~/.oh-my-zsh"
-export SSH_KEY_PATH="~/.ssh/rsa_id"
-export HOMEBREW_PREFIX="/opt/homebrew"
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=50000
+SAVEHIST=50000
+setopt share_history hist_ignore_all_dups hist_ignore_space
+
+autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'  # case-insensitive tab completion
+zstyle ':completion:*' menu select
 
 #-----------------------
-# THEME Variables
+# Aliases
 #-----------------------
 
-ZSH_THEME="powerlevel10k/powerlevel10k"
-ENABLE_CORRECTION="true"
-plugins=(
-  git
-  node 
-  macos 
-  sudo
-)
-
-#-----------------------
-# VISUAL Customizations
-#-----------------------
-
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir rbenv vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%f"
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{%B%F{black}%K{yellow}%} ➜%{%b%f%k%F{yellow}%} %{%f%}"
-POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='red'
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-
-#-----------------------
-# ALIAS Customizations
-#-----------------------
+alias ls='eza --icons --group-directories-first'
+alias ll='eza -l --icons --git --group-directories-first'
+alias la='eza -la --icons --git --group-directories-first'
+alias tree='eza --tree --icons'
 
 alias path='echo -e ${PATH//:/\\n}'
 alias gst="git status -s"
@@ -60,16 +36,44 @@ alias undo='git reset HEAD~1'
 alias gcm="git commit -m"
 alias stopcoder='pkill -f "systemcontainer"'
 
-if [ -f ~/.git-completion.bash ]; then
-  . ~/.git-completion.bash
-fi
+#-----------------------
+# Functions
+#-----------------------
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $ZSH/oh-my-zsh.sh
-if gem list -i colorls >/dev/null 2>&1; then
-  source "$(dirname "$(gem which colorls)")/tab_complete.sh"
-fi
+# Amphetamine replacement: `awake` keeps the Mac awake (lid closed too) for a chosen time; `sleepok` undoes it.
+awake() {
+  local choice PS3="Stay awake for how long? "
+  select choice in indefinitely "1 hour" "2 hours" "3 hours" "4 hours" "5 hours"; do
+    [[ -n $choice ]] && break
+  done
+  [[ -z $choice ]] && return 1
+  sudo -v || return 1
+  sudo pkill -f '[a]wake-timer'  # cancel any earlier timer so it can't cut this one short
+  sudo pmset -a disablesleep 1 || return 1
+  if [[ $choice == indefinitely ]]; then
+    echo "Awake until you run sleepok."
+  else
+    local hours=${choice%% *}
+    sudo -b nohup sh -c "sleep $((hours * 3600)); pmset -a disablesleep 0" awake-timer >/dev/null 2>&1
+    echo "Awake for $choice (until $(date -v+${hours}H '+%-I:%M %p'))."
+  fi
+}
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+sleepok() {
+  sudo pkill -f '[a]wake-timer'
+  sudo pmset -a disablesleep 0 && echo "Sleep re-enabled."
+}
+
+# Machine-only settings and secrets; never committed.
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
+#-----------------------
+# Tools
+#-----------------------
+
+# Prompt
+eval "$(starship init zsh)"
+
+# Plugins (syntax highlighting must be last)
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
